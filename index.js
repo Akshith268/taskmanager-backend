@@ -29,7 +29,11 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
         console.log(err);
     });
 
-
+    app.get('/', (req, res) => {
+        res.send('Welcome to the Task Manager API');
+    }
+    );
+    
     app.use('/api/auth', authRoute);
     app.use('/api/user', userRoute);
     app.use('/api/tasks', taskRoute);
