@@ -6,6 +6,7 @@ const User=require('../models/User');
 
 
 router.post('/register',async(req,res)=>{
+   console.log(req.body);
        try{
            const newuser=new User({
             username:req.body.username,
@@ -13,7 +14,7 @@ router.post('/register',async(req,res)=>{
             password:CryptoJS.DES.encrypt(req.body.password,process.env.SECRET_KEY).toString()   
          })
 
-
+          //  console.log(newuser);
           if(!newuser.username || !newuser.email || !newuser.password){
             return res.status(400).json({status:"error",message:"Please fill all the fields"});
             }
